@@ -1,12 +1,12 @@
 .header {
   min-height: 74px;
   margin-top: 45px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgb(84 84 84 / 0.7);
 }
 
 .header__image {
-  max-width: 173px;
-  min-height: 33px;
+  width: 173px;
+  height: 33px;
 }
 
 @media screen and (max-width: 857px) {
@@ -16,5 +16,12 @@
     width: 100%;
     padding: 28px 167px 32px 27px;
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 618px) {
+  .header__image {
+    width: 126px;
+    height: 24px;
   }
 }

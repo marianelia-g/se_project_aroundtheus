@@ -19,17 +19,19 @@
   max-width: 415px;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
   gap: 16px 18px;
   margin: 22px 41.25px 21px 0;
 }
 
 .profile__title {
-  max-width: 373px;
-  min-height: 48px;
+  width: 373px;
   margin: 0;
   font-size: 42px;
   font-weight: 500;
   line-height: 1.14;
+  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -37,19 +39,25 @@
   background: transparent url(../images/Vector-pen.svg) center no-repeat;
   width: 24px;
   height: 24px;
-  margin: 0;
+  margin: 15px 0 9px 0;
   padding: 0;
   border: 1px solid white;
+  align-self: center;
 }
 
 .profile__edit-button:hover {
+  cursor: pointer;
   opacity: 60%;
 }
 
 .profile__description {
+  max-width: 415px;
   margin: 0;
   font-size: 18px;
   line-height: 1.21;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .profile__add-button {
@@ -62,6 +70,7 @@
 }
 
 .profile__add-button:hover {
+  cursor: pointer;
   opacity: 60%;
 }
 
@@ -88,7 +97,6 @@
 
   .profile__title {
     max-width: 196px;
-    min-height: 22px;
     box-sizing: border-box;
     margin-left: auto;
     font-size: 22px;
@@ -99,8 +107,8 @@
     width: 18px;
     height: 18px;
     border-width: 1px;
-    margin-top: 4px;
-    margin-right: 15px;
+    margin: 0 15px 0 0;
+    align-self: center;
   }
 
   .profile__description {
