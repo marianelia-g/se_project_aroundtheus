@@ -23,7 +23,7 @@
   border-radius: 0 0 10px 10px;
 }
 .card__title {
-  width: 221px;
+  max-width: 221px;
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
   font-size: 24px;
