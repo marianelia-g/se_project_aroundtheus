@@ -1,0 +1,126 @@
+.modal {
+  display: none;
+  position: fixed;
+  padding: 0 19px 0 19px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.modal_opened {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  max-width: 430px;
+  max-height: 330px;
+  margin: auto;
+  padding: 36px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.modal__close-button {
+  height: 40px;
+  width: 40px;
+  background: url("../images/Close\ Icon.svg") transparent no-repeat;
+  background-size: contain;
+  border: none;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  cursor: pointer;
+}
+
+.modal__close-button:hover {
+  opacity: 0.6;
+}
+
+.modal__heading {
+  width: 330px;
+  height: 23px;
+  margin: 0 0 54px 0;
+  font-size: 24px;
+  font-weight: 900;
+  color: black;
+}
+
+.modal__form {
+  max-width: 358px;
+  min-height: 27.34px;
+  color: #000;
+}
+
+.modal__form-input {
+  width: 100%;
+  max-width: 358px;
+  min-height: 27.26px;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: rgba(0, 0, 0, 0.2);
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.21px;
+  text-align: left;
+}
+
+.modal__form-input:first-child {
+  margin-bottom: 29.74px;
+}
+
+.modal__form-savebutton {
+  width: 100%;
+  max-width: 358px;
+  min-height: 50.15px;
+  margin-top: 48px;
+  padding: 0;
+  border-radius: 2px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1.21;
+}
+
+.modal__form-savebutton:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 618px) {
+  .modal__container {
+    max-width: 282px;
+    max-height: 322px;
+    padding: 25px 22px 22px 22px;
+  }
+
+  .modal__heading {
+    width: 100%;
+    min-height: 22px;
+    font-size: 18px;
+    margin-bottom: 75px;
+  }
+
+  .modal__close-button {
+    width: 26px;
+    height: 26px;
+    bottom: calc(100% + 13.62px);
+    left: calc(100% - 32.62px);
+  }
+
+  .modal__form-input:first-child {
+    margin-bottom: 30px;
+  }
+
+  .modal__form-savebutton {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 45px;
+    font-size: 14px;
+  }
+}
