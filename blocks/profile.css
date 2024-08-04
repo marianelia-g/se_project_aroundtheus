@@ -17,9 +17,12 @@
 
 .profile__info {
   max-width: 415px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  display: grid;
+  grid-template-areas:
+    "title button"
+    "description description";
+  grid-gap: 18px 16px;
+  justify-items: flex-start;
   gap: 16px 18px;
   margin: 22px 41.25px 21px 0;
 }
@@ -113,8 +116,6 @@
 
   .profile__description {
     max-width: 282px;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     font-size: 14px;
   }

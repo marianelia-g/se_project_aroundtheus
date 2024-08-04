@@ -1,11 +1,14 @@
 # Project 3: Around The U.S.
 
-This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the Figma design brief.
+This is the third project of the Software Engineering program at TripleTen. This website was created using HTML, CSS, and JavaScript based on the Figma design brief.
+
+This webpage features a responsive web designs for popular screen sizes. A 3x2 card grid layout is available for large to medium screen widths.For users who prefer smaller screens like smartphones and tablets, a mobile layout is available with a 2x3 or 1x6 card grid with a vertical profile header.
 
 ### Project features
 
 - Semantic HTML5
 - CSS Flexbox and grid layout
+- JavaScript
 - A responsive design for popular screen sizes
 - Media queries
 - Figma based designs
@@ -14,7 +17,7 @@ This is the third project of the Software Engineering program at TripleTen. It w
 
 ## Plan on improving the project
 
-The next major update will utilize basic Javascript and DOM to increase the user interaction experience with the web page.
+The next major update will utilize basic Javascript to increase the user interaction experience with the web page.
 
 ## Site Live at:
 
