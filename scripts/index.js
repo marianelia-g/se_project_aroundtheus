@@ -29,7 +29,9 @@ const initialCards = [
  **                            ELEMENTS
  *------------------------------------------------------------------------**/
 const profileEditButton = document.querySelector("#profile-edit-button");
+const profileAddButton = document.querySelector("#profile-add-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const AddCardModal = document.querySelector("#add-card-modal");
 const profileCloseModal = document.querySelector("#profile-close-modal");
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-descr");
@@ -37,7 +39,10 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+
+const profileEditForm = profileEditModal.querySelector("#modal-edit-form");
+const AddCardEditForm = AddCardModal.querySelector("#modal-add-form");
+
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsListEl = document.querySelector(".cards__list");
@@ -46,6 +51,7 @@ const cardsListEl = document.querySelector(".cards__list");
  *------------------------------------------------------------------------**/
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
+  AddCardModal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -68,6 +74,12 @@ function handleProfileEditSubmit(e) {
   closePopup();
 }
 
+function handleAddCardSubmit(e) {
+  e.preventDefault();
+  console.log("card added");
+  closePopup();
+}
+
 /**------------------------------------------------------------------------
  **                            EVENT lISTENERS
  *------------------------------------------------------------------------**/
@@ -77,9 +89,15 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
 });
 
+profileAddButton.addEventListener("click", () => {
+  AddCardModal.classList.add("modal_opened");
+});
+
 profileCloseModal.addEventListener("click", closePopup);
+AddCardModal.addEventListener("click", closePopup);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+//AddCardEditForm.addEventListener("submit", handleAddCardSubmit);
 
 /**------------------------------------------------------------------------
  **                            LOOPS
