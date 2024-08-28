@@ -71,7 +71,7 @@ function getCardElement(cardData) {
 
 function rendercard(cardData) {
   const cardElement = getCardElement(cardData);
-  card.prepend(cardElement);
+  cardsListEl.prepend(cardElement);
 }
 /**------------------------------------------------------------------------
  **                            EVENT HANDLERS
@@ -88,10 +88,7 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   title = addCardTitleInput.value;
   link = addCardURLInput.value;
-  const cardElement = getCardElement({
-    title,
-    link,
-  });
+  rendercard({ title, link }, cardsListEl);
   closePopup();
 }
 
@@ -117,7 +114,4 @@ addCardEditForm.addEventListener("submit", handleAddCardSubmit);
 /**------------------------------------------------------------------------
  **                            LOOPS
  *------------------------------------------------------------------------**/
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardsListEl.append(cardElement);
-});
+initialCards.forEach((cardData) => rendercard(cardData));
