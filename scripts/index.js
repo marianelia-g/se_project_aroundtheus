@@ -1,26 +1,26 @@
 const initialCards = [
   {
-    name: "Yosemite Valley",
+    title: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
   {
-    name: "Lake Louise",
+    title: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
   {
-    name: "Bald Mountains",
+    title: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
   {
-    name: "Latemar",
+    title: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
-    name: "Vanoise National Park",
+    title: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
-    name: "Lago di Braies",
+    title: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
@@ -42,6 +42,9 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+
+const addCardTitleInput = document.querySelector("#add-card-title-input");
+const addCardURLInput = document.querySelector("#add-card-url-input");
 const profileEditForm = profileEditModal.querySelector("#edit-form-modal");
 const addCardEditForm = addCardModal.querySelector("#add-form-modal");
 
@@ -60,10 +63,15 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.alt = cardData.name;
+  cardTitleEl.textContent = cardData.title;
+  cardImageEl.alt = cardData.title;
   cardImageEl.src = cardData.link;
   return cardElement;
+}
+
+function rendercard(cardData) {
+  const cardElement = getCardElement(cardData);
+  card.prepend(cardElement);
 }
 /**------------------------------------------------------------------------
  **                            EVENT HANDLERS
@@ -78,7 +86,12 @@ function handleProfileEditSubmit(e) {
 
 function handleAddCardSubmit(e) {
   e.preventDefault();
-  console.log("card added");
+  title = addCardTitleInput.value;
+  link = addCardURLInput.value;
+  const cardElement = getCardElement({
+    title,
+    link,
+  });
   closePopup();
 }
 
