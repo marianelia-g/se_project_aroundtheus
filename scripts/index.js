@@ -64,6 +64,10 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
   cardTitleEl.textContent = cardData.title;
   cardImageEl.alt = cardData.title;
   cardImageEl.src = cardData.link;
@@ -116,11 +120,3 @@ addCardEditForm.addEventListener("submit", handleAddCardSubmit);
  **                            LOOPS
  *------------------------------------------------------------------------**/
 initialCards.forEach((cardData) => rendercard(cardData));
-
-const likeButtons = document.querySelectorAll("#card-like-button");
-console.log(likeButtons);
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle(".card__like-button_active");
-  });
-});

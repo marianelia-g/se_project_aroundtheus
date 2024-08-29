@@ -44,8 +44,7 @@
 }
 
 .card__like-button_active {
-  background-image: url(../images/Vector-heart-active.svg);
-  color: rgb(120, 211, 40);
+  background-image: url(..//images/Vector-heart-active.svg);
 }
 
 .card__like-button:hover {
