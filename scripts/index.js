@@ -28,6 +28,7 @@ const initialCards = [
 /**------------------------------------------------------------------------
  **                            ELEMENTS
  *------------------------------------------------------------------------**/
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const addNewCardButton = document.querySelector("#add-new-card-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -115,3 +116,11 @@ addCardEditForm.addEventListener("submit", handleAddCardSubmit);
  **                            LOOPS
  *------------------------------------------------------------------------**/
 initialCards.forEach((cardData) => rendercard(cardData));
+
+const likeButtons = document.querySelectorAll("#card-like-button");
+console.log(likeButtons);
+likeButtons.forEach((likeButton) => {
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle(".card__like-button_active");
+  });
+});
