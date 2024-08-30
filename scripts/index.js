@@ -58,7 +58,6 @@ const cardsListEl = document.querySelector(".cards__list");
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
   addCardModal.classList.remove("modal_opened");
-  imageModal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
