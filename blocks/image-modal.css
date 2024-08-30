@@ -1,0 +1,36 @@
+.image-modal__container {
+  position: relative;
+  margin: auto;
+}
+
+.image-modal__preview {
+  max-width: 75vw;
+  max-height: 75vh;
+  position: sticky;
+  border-style: none;
+}
+
+.image-modal__close-button {
+  height: 40px;
+  width: 40px;
+  background: url("../images/Close\ Icon.svg") transparent no-repeat;
+  background-size: contain;
+  border: none;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  cursor: pointer;
+}
+
+.image-modal__close-button:hover {
+  opacity: 0.6;
+}
+
+.image-modal__title {
+  width: 291px;
+  height: 12px;
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  color: #fff;
+  line-height: 14.52px;
+}
