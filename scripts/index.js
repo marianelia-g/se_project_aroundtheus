@@ -83,14 +83,14 @@ function getCardElement(cardData) {
   imageModalCloseButton.addEventListener("click", () => {
     imageModal.classList.remove("modal_opened");
   });
-  //! Jump here
+
   cardImage.addEventListener("click", () => {
     imageModal.classList.add("modal_opened");
   });
   cardTitle.textContent = cardData.title;
   cardImage.alt = cardData.title;
   cardImage.src = cardData.link;
-  //!jump here
+
   imageModalPreview.src = cardData.link;
   imageModalPreview.alt = cardData.title;
   imageModalTitle.textContent = cardData.title;
