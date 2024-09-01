@@ -52,8 +52,8 @@
   opacity: 50%;
 }
 
-.card__delete-button {
-  background: transparent url(..//images/delete-button.svg);
+.card__trash-button {
+  background: transparent url(..//images/trash-button.svg);
   width: 18px;
   height: 19.3px;
   margin: 18px 15px 244.7px 249px;
@@ -62,7 +62,7 @@
   border: none;
 }
 
-.card__delete-button:hover {
+.card__trash-button:hover {
   cursor: pointer;
   opacity: 50%;
 }
