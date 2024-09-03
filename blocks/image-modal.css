@@ -10,22 +10,6 @@
   border-style: none;
 }
 
-.image-modal__close-button {
-  height: 40px;
-  width: 40px;
-  background: url("../images/Close\ Icon.svg") transparent no-repeat;
-  background-size: contain;
-  border: none;
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
-  cursor: pointer;
-}
-
-.image-modal__close-button:hover {
-  opacity: 0.6;
-}
-
 .image-modal__title {
   width: 291px;
   height: 12px;
