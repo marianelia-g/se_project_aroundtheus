@@ -49,6 +49,13 @@ const addCardURLInput = document.querySelector("#add-card-url-input");
 const profileEditForm = document.forms["edit-form-modal"];
 const addCardEditForm = document.forms["add-form-modal"];
 
+const imageModal = document.querySelector("#image-modal");
+const imageModalPreview = document.querySelector("#image-modal-preview");
+const imageModalTitle = document.querySelector("#image-modal-title");
+const imageModalCloseButton = document.querySelector(
+  "#image-modal-close-button"
+);
+
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsListEl = document.querySelector(".cards__list");
@@ -70,12 +77,6 @@ function getCardElement(cardData) {
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
-  const imageModal = cardElement.querySelector("#image-modal");
-  const imageModalPreview = cardElement.querySelector("#image-modal-preview");
-  const imageModalTitle = cardElement.querySelector("#image-modal-title");
-  const imageModalCloseButton = cardElement.querySelector(
-    "#image-modal-close-button"
-  );
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
@@ -84,21 +85,20 @@ function getCardElement(cardData) {
     cardElement.remove("#card-template");
   });
 
-  imageModalCloseButton.addEventListener("click", () => {
-    closePopup(imageModal);
-  });
-
   cardImage.addEventListener("click", () => {
     openPopup(imageModal);
+    imageModalPreview.src = cardData.link;
+    imageModalPreview.alt = cardData.title;
+    imageModalTitle.textContent = cardData.title;
+  });
+  imageModalCloseButton.addEventListener("click", () => {
+    closePopup(imageModal);
   });
 
   cardTitle.textContent = cardData.title;
   cardImage.alt = cardData.title;
   cardImage.src = cardData.link;
 
-  imageModalPreview.src = cardData.link;
-  imageModalPreview.alt = cardData.title;
-  imageModalTitle.textContent = cardData.title;
   return cardElement;
 }
 
