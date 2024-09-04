@@ -81,7 +81,7 @@
   margin-bottom: 29.74px;
 }
 
-.modal__form-savebutton {
+.modal__submit-button {
   width: 100%;
   max-width: 358px;
   min-height: 50.15px;
@@ -96,7 +96,7 @@
   line-height: 1.21;
 }
 
-.modal__form-savebutton:hover {
+.modal__submit-button:hover {
   opacity: 0.8;
 }
 
