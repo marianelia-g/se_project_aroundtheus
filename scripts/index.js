@@ -33,10 +33,7 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const addNewCardButton = document.querySelector("#add-new-card-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
-const profileCloseModal = profileEditModal.querySelector(
-  "#profile-close-modal"
-);
-const addCloseModal = document.querySelector("#add-close-modal");
+const closeButtons = document.querySelectorAll(".modal__close-button");
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-descr");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -52,9 +49,6 @@ const addCardEditForm = document.forms["add-form-modal"];
 const imageModal = document.querySelector("#image-modal");
 const imageModalPreview = document.querySelector("#image-modal-preview");
 const imageModalTitle = document.querySelector("#image-modal-title");
-const imageModalCloseButton = document.querySelector(
-  "#image-modal-close-button"
-);
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
@@ -90,9 +84,6 @@ function getCardElement(cardData) {
     imageModalPreview.src = cardData.link;
     imageModalPreview.alt = cardData.title;
     imageModalTitle.textContent = cardData.title;
-  });
-  imageModalCloseButton.addEventListener("click", () => {
-    closePopup(imageModal);
   });
 
   cardTitle.textContent = cardData.title;
@@ -139,13 +130,6 @@ addNewCardButton.addEventListener("click", () => {
   openPopup(addCardModal);
 });
 
-profileCloseModal.addEventListener("click", () => {
-  closePopup(profileEditModal);
-});
-addCloseModal.addEventListener("click", () => {
-  closePopup(addCardModal);
-});
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardEditForm.addEventListener("submit", handleAddCardSubmit);
 
@@ -153,3 +137,10 @@ addCardEditForm.addEventListener("submit", handleAddCardSubmit);
  **                            LOOPS
  *------------------------------------------------------------------------**/
 initialCards.forEach((cardData) => rendercard(cardData));
+
+closeButtons.forEach((button) => {
+  // Find the closest popup only once
+  const popup = button.closest(".modal");
+  // Set the listener
+  button.addEventListener("click", () => closePopup(popup));
+});
