@@ -25,6 +25,11 @@
 
 .modal__container {
   position: relative;
+  margin: auto;
+}
+
+.modal__container_type_form {
+  position: relative;
   max-width: 430px;
   max-height: 330px;
   margin: auto;
@@ -100,19 +105,14 @@
   opacity: 0.8;
 }
 
-.modal__image-modal_container {
-  position: relative;
-  margin: auto;
-}
-
-.modal__image-modal_preview {
+.modal__image {
   max-width: 75vw;
   max-height: 75vh;
   position: sticky;
   border-style: none;
 }
 
-.modal__image-modal_title {
+.modal__title {
   width: 291px;
   height: 12px;
   margin: 0 0 10px 0;

@@ -55,7 +55,7 @@
 
     <!-- profile edit modal-->
     <div class="modal" id="profile-edit-modal">
-      <div class="modal__container">
+      <div class="modal__container modal__container_type_form">
         <button class="modal__close-button" id="profile-close-button"></button>
         <p class="modal__heading">Edit profile</p>
         <form class="modal__form" id="edit-form-modal">
@@ -80,7 +80,7 @@
 
     <!--add card modal-->
     <div class="modal" id="add-card-modal">
-      <div class="modal__container">
+      <div class="modal__container modal__container_type_form">
         <button class="modal__close-button" id="add-close-button"></button>
         <p class="modal__heading">New Place</p>
         <form class="modal__form" id="add-form-modal">
@@ -103,15 +103,11 @@
       </div>
     </div>
 
+    <!-- Thank-you for reviewing my code. Please let me know if these BEM changes work. ;)-->
     <div class="modal" id="image-modal">
-      <div class="modal__image-modal_container">
-        <img
-          src=""
-          alt=""
-          class="modal__image-modal_preview"
-          id="image-modal-preview"
-        />
-        <p class="modal__image-modal_title" id="image-modal-title"></p>
+      <div class="modal__container">
+        <img src="" alt="" class="modal__image" id="image-modal-preview" />
+        <p class="modal__title" id="image-modal-title"></p>
         <button
           class="modal__close-button"
           id="image-modal-close-button"
