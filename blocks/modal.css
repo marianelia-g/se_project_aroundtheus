@@ -122,7 +122,7 @@
 }
 
 @media screen and (max-width: 618px) {
-  .modal__container {
+  .modal__container_type_form {
     max-width: 282px;
     max-height: 322px;
     padding: 25px 22px 22px 22px;
