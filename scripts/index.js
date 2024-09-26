@@ -58,11 +58,11 @@ const cardsListEl = document.querySelector(".cards__list");
  *------------------------------------------------------------------------**/
 
 function closePopup(popup) {
-  popup.classList.remove("modal_opened");
+  popup.classList.remove("modal--opened");
 }
 
 function openPopup(popup) {
-  popup.classList.add("modal_opened");
+  popup.classList.add("modal--opened");
 }
 
 function getCardElement(cardData) {
@@ -73,7 +73,7 @@ function getCardElement(cardData) {
   const trashButton = cardElement.querySelector(".card__trash-button");
 
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
+    likeButton.classList.toggle("card__like-button--active");
   });
   trashButton.addEventListener("click", () => {
     cardElement.remove();

@@ -43,7 +43,7 @@
   background-color: #fff;
 }
 
-.card__like-button_active {
+.card__like-button--active {
   background-image: url(..//images/Vector-heart-active.svg);
 }
 
