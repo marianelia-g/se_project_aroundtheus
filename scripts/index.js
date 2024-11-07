@@ -53,6 +53,17 @@ const imageModalTitle = document.querySelector("#image-modal-title");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsListEl = document.querySelector(".cards__list");
+
+/**============================================
+ **               ARROW FUNCTION
+ *=============================================**/
+const showError = (input) => {
+  input.classList.add("modal__form--input-type--error");
+};
+
+const hideError = (input) => {
+  input.classList.remove("modal__from-input-type--error");
+};
 /**------------------------------------------------------------------------
  **                           FUNCTION
  *------------------------------------------------------------------------**/
@@ -97,6 +108,7 @@ function rendercard(cardData) {
   const cardElement = getCardElement(cardData);
   cardsListEl.prepend(cardElement);
 }
+
 /**------------------------------------------------------------------------
  **                            EVENT HANDLERS
  *------------------------------------------------------------------------**/
@@ -117,6 +129,13 @@ function handleAddCardSubmit(e) {
   e.target.reset();
 }
 
+function handleProfileInputValidity(e) {
+  console.log(e.target.validity);
+}
+function handleAddCardInputValidity(e) {
+  console.log(e.target.validity);
+}
+
 /**------------------------------------------------------------------------
  **                            EVENT lISTENERS
  *------------------------------------------------------------------------**/
@@ -129,6 +148,9 @@ profileEditButton.addEventListener("click", () => {
 addNewCardButton.addEventListener("click", () => {
   openPopup(addCardModal);
 });
+
+profileEditForm.addEventListener("input", handleProfileInputValidity);
+addCardEditForm.addEventListener("input", handleAddCardInputValidity);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardEditForm.addEventListener("submit", handleAddCardSubmit);

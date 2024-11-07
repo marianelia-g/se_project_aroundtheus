@@ -58,21 +58,29 @@
       <div class="modal__container modal__container--type-form">
         <button class="modal__close-button" id="profile-close-button"></button>
         <p class="modal__heading">Edit profile</p>
-        <form class="modal__form" id="edit-form-modal">
+        <form class="modal__form" id="edit-form-modal" novalidate>
           <input
             type="text"
             id="profile-title-input"
             class="modal__form-input"
             name="title"
             placeholder="John Doe"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="modal__form-input-type--error">Go Back</span>
           <input
             type="text"
             id="profile-description-input"
             class="modal__form-input"
             name="description"
             placeholder="description"
+            minlength="2"
+            maxlength="400"
+            required
           />
+          <span class="modal__form-input-type--error">Sop Sop</span>
           <button class="modal__submit-button">Save</button>
         </form>
       </div>
@@ -83,20 +91,24 @@
       <div class="modal__container modal__container--type-form">
         <button class="modal__close-button" id="add-close-button"></button>
         <p class="modal__heading">New Place</p>
-        <form class="modal__form" id="add-form-modal">
+        <form class="modal__form" id="add-form-modal" novalidate>
           <input
             type="text"
             id="add-card-title-input"
             class="modal__form-input"
             name="title"
             placeholder="Title"
+            minlength="1"
+            maxlength="30"
+            required
           />
           <input
-            type="text"
+            type="url"
             id="add-card-url-input"
             class="modal__form-input"
             name="url"
             placeholder="Image URL"
+            required
           />
           <button class="modal__submit-button">Add</button>
         </form>
