@@ -69,7 +69,9 @@
             maxlength="40"
             required
           />
-          <span class="modal__form-input-type--error">Go Back</span>
+          <span id="profile-title-input-error" class="modal__form-input--error"
+            >This field is required.</span
+          >
           <input
             type="text"
             id="profile-description-input"
@@ -80,7 +82,10 @@
             maxlength="400"
             required
           />
-          <span class="modal__form-input-type--error">Sop Sop</span>
+          <span
+            id="profile-descr-input-error"
+            class="modal__form-input--error"
+          ></span>
           <button class="modal__submit-button">Save</button>
         </form>
       </div>
@@ -102,14 +107,22 @@
             maxlength="30"
             required
           />
+          <span
+            id="add-card-title-input-error"
+            class="modal__form-input--error"
+          ></span>
           <input
-            type="url"
+            type="URL"
             id="add-card-url-input"
             class="modal__form-input"
             name="url"
             placeholder="Image URL"
             required
           />
+          <span
+            id="add-card-url-input-error"
+            class="modal__form-input--error"
+          ></span>
           <button class="modal__submit-button">Add</button>
         </form>
       </div>

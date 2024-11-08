@@ -41,6 +41,7 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
+const formInput = document.querySelector(".modal__form-input");
 const addCardTitleInput = document.querySelector("#add-card-title-input");
 const addCardURLInput = document.querySelector("#add-card-url-input");
 const profileEditForm = document.forms["edit-form-modal"];
@@ -58,12 +59,21 @@ const cardsListEl = document.querySelector(".cards__list");
  **               ARROW FUNCTION
  *=============================================**/
 const showError = (input) => {
-  input.classList.add("modal__form--input-type--error");
+  input.classList.add("modal__form-input--error");
 };
 
 const hideError = (input) => {
-  input.classList.remove("modal__from-input-type--error");
+  input.classList.remove("modal__form-input--error");
 };
+
+const checkInputValidity = () => {
+  if (!formInput.validity.valid) {
+    showError(formInput);
+  } else {
+    hideError(formInput);
+  }
+};
+
 /**------------------------------------------------------------------------
  **                           FUNCTION
  *------------------------------------------------------------------------**/
@@ -130,10 +140,10 @@ function handleAddCardSubmit(e) {
 }
 
 function handleProfileInputValidity(e) {
-  console.log(e.target.validity);
+  console.log(e.target.validity.valid);
 }
 function handleAddCardInputValidity(e) {
-  console.log(e.target.validity);
+  console.log(e.target.validity.valid);
 }
 
 /**------------------------------------------------------------------------
@@ -151,6 +161,7 @@ addNewCardButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("input", handleProfileInputValidity);
 addCardEditForm.addEventListener("input", handleAddCardInputValidity);
+formInput.addEventListener("input", checkInputValidity);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardEditForm.addEventListener("submit", handleAddCardSubmit);

@@ -85,16 +85,17 @@
 .modal__form-input:first-child {
   margin-bottom: 29.74px;
 }
-
+/*
 .modal__form-input:invalid {
   border-bottom: 1px solid red;
 }
 
 .modal__form-input:valid {
   border-bottom: 1px solid green;
-}
-.modal__form-input:hover {
-  border-bottom-color: black;
+}*/
+.modal__form-input--error {
+  display: none;
+  border-bottom: 1px solid red;
 }
 
 .modal__submit-button {
