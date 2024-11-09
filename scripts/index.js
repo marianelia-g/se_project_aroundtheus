@@ -55,24 +55,57 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsListEl = document.querySelector(".cards__list");
 
-/**============================================
- **               ARROW FUNCTION
- *=============================================**/
-const showError = (input) => {
+const form = document.querySelector(".modal__form");
+
+/**------------------------------------------------------------------------
+ **                             ARROW FUNCTION
+ *------------------------------------------------------------------------**/
+
+const showError = (form, input, errorMessage) => {
+  const errorELement = form.querySelector(`.${input.id}-error`);
   input.classList.add("modal__form-input--error");
+  //errorELement.textContent = errorMessage;
+  errorELement.classList.add("modal__form-input--active");
 };
 
-const hideError = (input) => {
+const hideError = (form, input) => {
+  const errorELement = form.querySelector(`.${input.id}-error`);
   input.classList.remove("modal__form-input--error");
+  errorELement.classList.remove("modal__form-input--active");
+  errorELement.textContent = "";
 };
 
-const checkInputValidity = () => {
-  if (!formInput.validity.valid) {
-    showError(formInput);
+const checkInputValidity = (form, input) => {
+  if (!input.validity.valid) {
+    showError(form, input, input.validationMessage);
   } else {
-    hideError(formInput);
+    hideError(form, input);
   }
 };
+
+const setEventListeners = (form) => {
+  const inputList = Array.from(form.querySelectorAll(".modal__form-input"));
+  inputList.forEach((input) => {
+    input.addEventListener("input", () => {
+      checkInputValidity(form, input);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll(".modal__form"));
+  formList.forEach((form) => {
+    form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    setEventListeners(form);
+  });
+};
+
+/**============================================
+ **               CALL ARROW FUNCTION
+ *=============================================**/
+enableValidation();
 
 /**------------------------------------------------------------------------
  **                           FUNCTION
@@ -139,13 +172,6 @@ function handleAddCardSubmit(e) {
   e.target.reset();
 }
 
-function handleProfileInputValidity(e) {
-  console.log(e.target.validity.valid);
-}
-function handleAddCardInputValidity(e) {
-  console.log(e.target.validity.valid);
-}
-
 /**------------------------------------------------------------------------
  **                            EVENT lISTENERS
  *------------------------------------------------------------------------**/
@@ -159,8 +185,6 @@ addNewCardButton.addEventListener("click", () => {
   openPopup(addCardModal);
 });
 
-profileEditForm.addEventListener("input", handleProfileInputValidity);
-addCardEditForm.addEventListener("input", handleAddCardInputValidity);
 formInput.addEventListener("input", checkInputValidity);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -175,3 +199,7 @@ closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closePopup(popup));
 });
+
+/**------------------------------------------------------------------------
+ **                           Console Log
+ *------------------------------------------------------------------------**/

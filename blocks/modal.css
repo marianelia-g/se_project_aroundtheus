@@ -85,17 +85,16 @@
 .modal__form-input:first-child {
   margin-bottom: 29.74px;
 }
-/*
-.modal__form-input:invalid {
-  border-bottom: 1px solid red;
+
+/* here*/
+
+.modal__form-input--error {
+  border-color: rgb(0, 255, 123);
+  color: crimson;
 }
 
-.modal__form-input:valid {
-  border-bottom: 1px solid green;
-}*/
-.modal__form-input--error {
-  display: none;
-  border-bottom: 1px solid red;
+.modal__form-input--active {
+  opacity: 1;
 }
 
 .modal__submit-button {
