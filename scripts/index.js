@@ -55,24 +55,24 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsListEl = document.querySelector(".cards__list");
 
-const form = document.querySelector(".modal__form");
+const modalForm = document.querySelector(".modal__form");
 
 /**------------------------------------------------------------------------
  **                             ARROW FUNCTION
  *------------------------------------------------------------------------**/
 
 const showError = (form, input, errorMessage) => {
-  const errorELement = form.querySelector(`.${input.id}-error`);
+  const errorElement = form.querySelector(`.${input.id}-error`);
   input.classList.add("modal__form-input--error");
-  //errorELement.textContent = errorMessage;
-  errorELement.classList.add("modal__form-input--active");
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add("modal__form-input--active");
 };
 
 const hideError = (form, input) => {
-  const errorELement = form.querySelector(`.${input.id}-error`);
+  const errorElement = form.querySelector(`.${input.id}-error`);
   input.classList.remove("modal__form-input--error");
-  errorELement.classList.remove("modal__form-input--active");
-  errorELement.textContent = "";
+  errorElement.classList.remove("modal__form-input--active");
+  errorElement.textContent = "";
 };
 
 const checkInputValidity = (form, input) => {
@@ -83,8 +83,25 @@ const checkInputValidity = (form, input) => {
   }
 };
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((input) => {
+    return !input.validity.valid;
+  });
+};
+
+const toggleButtonState = (inputList, button) => {
+  if (hasInvalidInput(inputList)) {
+    button.classList.add("modal__submit-button--inactive");
+  } else {
+    button.classList.remove("modal__submit-button--inactive");
+  }
+};
+
 const setEventListeners = (form) => {
   const inputList = Array.from(form.querySelectorAll(".modal__form-input"));
+  const submitButton = form.querySelector(".modal__submit-button");
+
+  toggleButtonState(inputList, submitButton);
   inputList.forEach((input) => {
     input.addEventListener("input", () => {
       checkInputValidity(form, input);
