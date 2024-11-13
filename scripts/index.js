@@ -136,10 +136,12 @@ enableValidation();
 
 function closePopup(popup) {
   popup.classList.remove("modal--opened");
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 
 function openPopup(popup) {
   popup.classList.add("modal--opened");
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
 function closeByOverlay(popup) {
@@ -148,6 +150,15 @@ function closeByOverlay(popup) {
       closePopup(popup);
     }
   });
+}
+
+function handleEscapeKey(e) {
+  if (e.key === "Escape") {
+    const openPopup = document.querySelector(".modal--opened");
+    if (openPopup) {
+      closePopup(openPopup);
+    }
+  }
 }
 
 function getCardElement(cardData) {
@@ -235,6 +246,7 @@ closeButtons.forEach((button) => {
 modal.forEach((popup) => {
   closeByOverlay(popup);
 });
+
 /**------------------------------------------------------------------------
  **                           Console Log
  *------------------------------------------------------------------------**/
