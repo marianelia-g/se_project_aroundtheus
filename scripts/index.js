@@ -41,6 +41,7 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
+const modal = document.querySelectorAll(".modal");
 const formInput = document.querySelector(".modal__form-input");
 const addCardTitleInput = document.querySelector("#add-card-title-input");
 const addCardURLInput = document.querySelector("#add-card-url-input");
@@ -48,6 +49,7 @@ const profileEditForm = document.forms["edit-form-modal"];
 const addCardEditForm = document.forms["add-form-modal"];
 
 const imageModal = document.querySelector("#image-modal");
+const imageModalOverlay = document.querySelector("#image-modal-overlay");
 const imageModalPreview = document.querySelector("#image-modal-preview");
 const imageModalTitle = document.querySelector("#image-modal-title");
 
@@ -65,13 +67,15 @@ const showError = (form, input, errorMessage) => {
   const errorElement = form.querySelector(`.${input.id}-error`);
   input.classList.add("modal__form-input--error");
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("modal__form-input--active");
+  errorElement.classList.add("modal__error--visible");
+  errorElement.classList.remove("modal__error--hidden");
 };
 
 const hideError = (form, input) => {
   const errorElement = form.querySelector(`.${input.id}-error`);
   input.classList.remove("modal__form-input--error");
-  errorElement.classList.remove("modal__form-input--active");
+  errorElement.classList.add("modal__error--hidden");
+  errorElement.classList.remove("modal__error--visible");
   errorElement.textContent = "";
 };
 
@@ -89,12 +93,13 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, button) => {
+const toggleButtonState = (inputList, submitButton) => {
   if (hasInvalidInput(inputList)) {
-    button.classList.add("modal__submit-button--inactive");
-  } else {
-    button.classList.remove("modal__submit-button--inactive");
+    submitButton.classList.add("modal__submit-button--inactive");
+    return (submitButton.disabled = true);
   }
+  submitButton.classList.remove("modal__submit-button--inactive");
+  submitButton.disabled = false;
 };
 
 const setEventListeners = (form) => {
@@ -105,6 +110,7 @@ const setEventListeners = (form) => {
   inputList.forEach((input) => {
     input.addEventListener("input", () => {
       checkInputValidity(form, input);
+      toggleButtonState(inputList, submitButton);
     });
   });
 };
@@ -136,12 +142,21 @@ function openPopup(popup) {
   popup.classList.add("modal--opened");
 }
 
+function closeByOverlay(popup) {
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      closePopup(popup);
+    }
+  });
+}
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
+  const imageModal = document.querySelector("#image-modal");
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button--active");
@@ -217,6 +232,9 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
+modal.forEach((popup) => {
+  closeByOverlay(popup);
+});
 /**------------------------------------------------------------------------
  **                           Console Log
  *------------------------------------------------------------------------**/
