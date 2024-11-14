@@ -4,7 +4,7 @@ This is the third project of the Software Engineering program at TripleTen. This
 
 This webpage features a responsive web designs for popular screen sizes. A 3x2 card grid layout is available for large to medium screen widths.For users who prefer smaller screens like smartphones and tablets, a mobile layout is available with a 2x3 or 1x6 card grid with a vertical profile header.
 
-JavaScript was used to validate forms, open pop-up modals, activate and disable buttons. As well as, edit forms, and add or delete custome photo cards.
+JavaScript was used to validate forms, open pop-up modals, activate and disable buttons. As well as, edit forms, and add or delete custom photo cards.
 
 ### Project features
 
