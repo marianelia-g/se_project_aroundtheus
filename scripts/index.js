@@ -42,7 +42,7 @@ const profileDescriptionInput = document.querySelector(
 );
 
 const modal = document.querySelectorAll(".modal");
-const formInput = document.querySelector(".modal__form-input");
+
 const addCardTitleInput = document.querySelector("#add-card-title-input");
 const addCardURLInput = document.querySelector("#add-card-url-input");
 const profileEditForm = document.forms["edit-form-modal"];
