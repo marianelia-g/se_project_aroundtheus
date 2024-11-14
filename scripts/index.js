@@ -63,27 +63,27 @@ const modalForm = document.querySelector(".modal__form");
  **                             ARROW FUNCTION
  *------------------------------------------------------------------------**/
 
-const showError = (form, input, errorMessage) => {
+const showError = (form, input, errorMessage, options) => {
   const errorElement = form.querySelector(`.${input.id}-error`);
-  input.classList.add("modal__form-input--error");
+  input.classList.add(options.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("modal__error--visible");
-  errorElement.classList.remove("modal__error--hidden");
+  errorElement.classList.add(options.errorVisibleClass);
+  errorElement.classList.remove(options.errorHiddenClass);
 };
 
-const hideError = (form, input) => {
+const hideError = (form, input, options) => {
   const errorElement = form.querySelector(`.${input.id}-error`);
-  input.classList.remove("modal__form-input--error");
-  errorElement.classList.add("modal__error--hidden");
-  errorElement.classList.remove("modal__error--visible");
+  input.classList.remove(options.inputErrorClass);
+  errorElement.classList.add(options.errorHiddenClass);
+  errorElement.classList.remove(options.errorVisibleClass);
   errorElement.textContent = "";
 };
 
-const checkInputValidity = (form, input) => {
+const checkInputValidity = (form, input, options) => {
   if (!input.validity.valid) {
-    showError(form, input, input.validationMessage);
+    showError(form, input, input.validationMessage, options);
   } else {
-    hideError(form, input);
+    hideError(form, input, options);
   }
 };
 
@@ -93,42 +93,47 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, submitButton) => {
+const toggleButtonState = (inputList, submitButton, options) => {
   if (hasInvalidInput(inputList)) {
-    submitButton.classList.add("modal__submit-button--inactive");
+    submitButton.classList.add(options.inactiveButtonClass);
     return (submitButton.disabled = true);
   }
-  submitButton.classList.remove("modal__submit-button--inactive");
+  submitButton.classList.remove(options.inactiveButtonClass);
   submitButton.disabled = false;
 };
 
-const setEventListeners = (form) => {
-  const inputList = Array.from(form.querySelectorAll(".modal__form-input"));
-  const submitButton = form.querySelector(".modal__submit-button");
+const setEventListeners = (form, options) => {
+  const inputList = Array.from(form.querySelectorAll(options.inputSelector));
+  const submitButton = form.querySelector(options.submitButtonSelector);
 
-  toggleButtonState(inputList, submitButton);
+  toggleButtonState(inputList, submitButton, options);
   inputList.forEach((input) => {
     input.addEventListener("input", () => {
-      checkInputValidity(form, input);
-      toggleButtonState(inputList, submitButton);
+      checkInputValidity(form, input, options);
+      toggleButtonState(inputList, submitButton, options);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".modal__form"));
+const enableValidation = (options) => {
+  const formList = Array.from(document.querySelectorAll(options.formSelector));
   formList.forEach((form) => {
     form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    setEventListeners(form);
+    setEventListeners(form, options);
   });
 };
 
-/**============================================
- **               CALL ARROW FUNCTION
- *=============================================**/
-enableValidation();
+enableValidation({
+  formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button--inactive",
+  inputErrorClass: "modal__form-input--error",
+  errorVisibleClass: "modal__error--visible",
+  errorHiddenClass: "modal__error--hidden",
+});
 
 /**------------------------------------------------------------------------
  **                           FUNCTION
