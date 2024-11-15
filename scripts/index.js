@@ -41,7 +41,7 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-const modal = document.querySelectorAll(".modal");
+const modals = document.querySelectorAll(".modal");
 
 const addCardTitleInput = document.querySelector("#add-card-title-input");
 const addCardURLInput = document.querySelector("#add-card-url-input");
@@ -56,8 +56,6 @@ const imageModalTitle = document.querySelector("#image-modal-title");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardsListEl = document.querySelector(".cards__list");
-
-const modalForm = document.querySelector(".modal__form");
 
 /**------------------------------------------------------------------------
  **                           FUNCTION
@@ -96,7 +94,6 @@ function getCardElement(cardData) {
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
-  const imageModal = document.querySelector("#image-modal");
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button--active");
@@ -170,10 +167,7 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
-modal.forEach((popup) => {
-  closeByOverlay(popup);
-});
-
+modals.forEach(closeByOverlay);
 /**------------------------------------------------------------------------
  **                           Console Log
  *------------------------------------------------------------------------**/
