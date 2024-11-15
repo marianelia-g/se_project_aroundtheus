@@ -116,10 +116,17 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function rendercard(item, method = "prepend") {
+  const cardElement = getCardElement(item);
+  cardsListEl[method](cardElement);
+}
+
+/*
 function rendercard(cardData) {
   const cardElement = getCardElement(cardData);
   cardsListEl.prepend(cardElement);
 }
+  */
 
 /**------------------------------------------------------------------------
  **                            EVENT HANDLERS

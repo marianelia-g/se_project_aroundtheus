@@ -28,7 +28,7 @@
   margin: auto;
 }
 
-.modal__container--type-form {
+.modal__container-type-form {
   position: relative;
   max-width: 430px;
   max-height: 330px;
@@ -160,7 +160,7 @@
 }
 
 @media screen and (max-width: 618px) {
-  .modal__container--type-form {
+  .modal__container-type-form {
     max-width: 282px;
     max-height: 322px;
     padding: 25px 22px 22px 22px;
