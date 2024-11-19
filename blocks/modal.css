@@ -94,7 +94,7 @@
 }
 
 .modal__form-input:nth-child(3) {
-  margin-top: 29.74px;
+  margin-top: 1.46px;
 }
 
 /* here*/
@@ -103,23 +103,24 @@
   border-color: #ff0000;
 }
 
-.modal__error--visible {
-  visibility: visible;
-  opacity: 1;
+.modal__error--hidden {
+  display: flex;
+  visibility: hidden;
+  width: 358px;
+  height: 27.59px;
   color: #ff0000;
   font-size: 12px;
 }
 
-.modal__error--hidden {
-  visibility: hidden;
-  opacity: 0;
+.modal__error--visible {
+  visibility: visible;
 }
 
 .modal__submit-button {
   width: 100%;
   max-width: 358px;
   min-height: 50.15px;
-  margin-top: 48px;
+  margin-top: 20.46px;
   padding: 0;
   border-radius: 2px;
   border: none;
@@ -182,6 +183,10 @@
 
   .modal__form-input:first-child {
     margin-bottom: 30px;
+  }
+
+  .modal__error--hidden {
+    width: 282px;
   }
 
   .modal__submit-button {

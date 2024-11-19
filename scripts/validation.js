@@ -7,7 +7,7 @@ const showError = (form, input, errorMessage, options) => {
   input.classList.add(options.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(options.errorVisibleClass);
-  errorElement.classList.remove(options.errorHiddenClass);
+  //errorElement.classList.remove(options.errorHiddenClass);
 };
 
 const hideError = (form, input, options) => {
