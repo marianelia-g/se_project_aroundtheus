@@ -164,11 +164,12 @@
   .modal__container-type-form {
     max-width: 282px;
     max-height: 322px;
-    padding: 25px 22px 22px 22px;
+    padding: 25px 22px;
   }
 
   .modal__heading {
     width: 100%;
+    max-width: 238px;
     min-height: 22px;
     font-size: 18px;
     margin-bottom: 75px;
@@ -181,8 +182,8 @@
     left: calc(100% - 32.62px);
   }
 
-  .modal__form-input:first-child {
-    margin-bottom: 30px;
+  .modal__form-input:nth-child(3) {
+    margin-top: 2.46px;
   }
 
   .modal__error--hidden {
@@ -192,7 +193,7 @@
   .modal__submit-button {
     width: 100%;
     min-height: 46px;
-    margin-top: 45px;
+    margin-top: 17.46px;
     font-size: 14px;
   }
 }
