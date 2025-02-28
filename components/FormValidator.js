@@ -11,13 +11,13 @@ class FormValidator {
   }
 
   _showError(input) {
-    const errorElement = this.form.querySelector(`.${input.id}-error`);
+    const errorElement = this._form.querySelector(`.${input.id}-error`);
     input.classList.add(this._inputErrorClass);
     input.classList.remove(this._inputErrorClass);
     errorElement.classList.add(this._errorHiddenClass);
     errorElement.classList.remove(this._errorVisibleClass);
     errorElement.textContent = input.validationMessage;
-    //errorElement.classList.add(this.errorVisibleClass);
+    errorElement.classList.add(this._errorVisibleClass);
   }
 
   _hideError(input) {
@@ -31,7 +31,7 @@ class FormValidator {
   _checkInputValidity(input) {
     if (!input.validity.valid) {
       this._showError(input);
-      //this._showError(input, input.validationMessage);
+      this._showError(input, input.validationMessage);
     } else {
       this._hideError(input);
     }
@@ -56,7 +56,7 @@ class FormValidator {
     );
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
 
-    this.toggleButtonState();
+    this._toggleButtonState();
 
     this._inputList.forEach((input) => {
       input.addEventListener("input", () => {
@@ -79,6 +79,4 @@ class FormValidator {
   }
 }
 
-//Move to index.js
-//const addFormValidator = new FormValidator(Settings, addForm);
 export default FormValidator;
