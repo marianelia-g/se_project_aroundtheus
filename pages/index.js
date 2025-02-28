@@ -111,21 +111,82 @@ function handleEscapeKey(e) {
 /**------------------------------------------------------------------------
  **                           IMAGE MODAL HANDLER
  *------------------------------------------------------------------------**/
+function handleImageClick(title, link) {
+  imageModalPreview.src = link;
+  imageModalPreview.alt = title;
+  imageModalTitle.textContent = title;
+  openPopup(imageModal);
+}
+
 /**------------------------------------------------------------------------
  **                           CARD FUNCTION
  *------------------------------------------------------------------------**/
+function renderCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  const cardElement = card.generateCard();
+  cardsListEl.prepend(cardElement);
+}
+
 /**------------------------------------------------------------------------
  **                           EVENT HANDLERS
  *------------------------------------------------------------------------**/
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup(profileEditModal);
+}
+
+function handleAddCardSubmit(e) {
+  e.preventDefault();
+  const title = addCardTitleInput.value;
+  const link = addCardURLInput.value;
+  renderCard({ title, link });
+  closePopup(addCardModal);
+  e.target.reset();
+  addCardFormValidator.resetValidation();
+}
 /**------------------------------------------------------------------------
  **                           FORM VALIDATION
  *------------------------------------------------------------------------**/
+const profileFormValidator = new FormValidator(
+  validationSettings,
+  profileEditForm
+);
+const addCardFormValidator = new FormValidator(
+  validationSettings,
+  addCardEditForm
+);
+
+profileFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
+
 /**------------------------------------------------------------------------
  **                           EVENT LISTENERS
  *------------------------------------------------------------------------**/
+profileEditButton.addEventListener("click", () => {
+  openPopup(profileEditModal);
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+});
+
+addNewCardButton.addEventListener("click", () => {
+  openPopup(addCardModal);
+});
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addCardEditForm.addEventListener("submit", handleAddCardSubmit);
+
+closeButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  button.addEventListener("click", () => closePopup(popup));
+});
+
+modals.forEach(closeByOverlay);
 /**------------------------------------------------------------------------
  **                           INITIAL RENDERING
  *------------------------------------------------------------------------**/
+initialCards.forEach(renderCard);
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
