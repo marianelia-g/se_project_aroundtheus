@@ -112,9 +112,13 @@ function handleImageClick(title, link) {
 /**------------------------------------------------------------------------
  **                           CARD FUNCTION
  *------------------------------------------------------------------------**/
-function renderCard(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.generateCard();
+  return card.generateCard();
+}
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
   cardsListEl.prepend(cardElement);
 }
 
