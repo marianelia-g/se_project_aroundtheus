@@ -140,7 +140,8 @@ function handleAddCardSubmit(e) {
   closePopup(addCardModal);
   e.target.reset();
   addCardFormValidator.resetValidation();
-  addCardFormValidator.disableButton();
+  // Kept resetValidations --this disables the add button for new cards//
+  // Deleted disableButton --it clears the console error message and has no effect on the button//
 }
 
 /**------------------------------------------------------------------------
