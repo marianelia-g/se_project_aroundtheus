@@ -160,6 +160,9 @@ profileEditButton.addEventListener("click", () => {
   openPopup(profileEditModal);
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+
+  profileFormValidator.resetValidation();
+  profileFormValidator.enableValidation();
 });
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));

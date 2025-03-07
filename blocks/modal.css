@@ -145,7 +145,7 @@
 }
 
 .modal__submit-button--inactive {
-  cursor: not-allowed;
+  pointer-events: none;
   background-color: white;
   border-color: lightgrey;
   color: lightgrey;
