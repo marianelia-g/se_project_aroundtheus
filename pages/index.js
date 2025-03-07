@@ -140,6 +140,7 @@ function handleAddCardSubmit(e) {
   closePopup(addCardModal);
   e.target.reset();
   addCardFormValidator.resetValidation();
+  addCardFormValidator.disableButton();
 }
 
 /**------------------------------------------------------------------------
