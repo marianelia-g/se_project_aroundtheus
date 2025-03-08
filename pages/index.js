@@ -140,8 +140,7 @@ function handleAddCardSubmit(e) {
   closePopup(addCardModal);
   e.target.reset();
   addCardFormValidator.resetValidation();
-  // Kept resetValidations --this disables the add button for new cards//
-  // Deleted disableButton --it clears the console error message and has no effect on the button//
+  //Thank you for reviewing my code. I will look into your suggestions.
 }
 
 /**------------------------------------------------------------------------
@@ -168,7 +167,6 @@ profileEditButton.addEventListener("click", () => {
   profileDescriptionInput.value = profileDescription.textContent;
 
   profileFormValidator.resetValidation();
-  profileFormValidator.enableValidation();
 });
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
